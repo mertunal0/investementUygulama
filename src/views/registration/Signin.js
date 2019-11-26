@@ -30,7 +30,7 @@ export default class Signin extends Component {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then(() => this.props.navigation.navigate('Home'))
+        .then(() => this.props.navigation.navigate('BottomTabNavigator'))
         .catch(error => console.log(error))
     }
   }

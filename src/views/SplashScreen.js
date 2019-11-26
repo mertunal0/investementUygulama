@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import firebase from 'firebase';
 import { Firebase } from '../components/Firebase';
 
-const TWO_SECONDS = 2000;
+const TIME_DELAY = 2000;
 
 export default class SplashScreen extends React.Component {
   componentDidMount() {
@@ -12,9 +12,9 @@ export default class SplashScreen extends React.Component {
       Firebase.init();
       //firebase.auth().signOut();
       firebase.auth().onAuthStateChanged(user => {
-        this.props.navigation.navigate(user ? 'Home' : 'Welcome')
+        this.props.navigation.navigate(user ? 'BottomTabNavigator' : 'Welcome')
       })
-    }, TWO_SECONDS);
+    }, TIME_DELAY);
   }
 
   render() {

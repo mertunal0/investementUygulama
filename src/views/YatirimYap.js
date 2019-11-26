@@ -16,7 +16,7 @@ export default class Home extends Component {
     }
 
     static navigationOptions = { 
-      title: 'Feed',
+      title: 'Yatırım Yap',
     }
 
   render() {
@@ -24,7 +24,7 @@ export default class Home extends Component {
 
     return (
         <View style={styles.container}>
-          <Text>Home screen</Text>
+          <Text onPress={() => navigate('Signin')}>Yatırım Yap screen</Text>
         </View>
     );
   }
