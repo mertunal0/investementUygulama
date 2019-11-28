@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import HomeScreen from './Home';
 import ProfileScreen from './Profile';
-import YatirimYapScreen from './YatirimYap';
+import YatirimYapScreen from './YatirimYapStack';
 
 const BottomTabNavigator = createBottomTabNavigator({
 
