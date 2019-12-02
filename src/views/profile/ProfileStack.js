@@ -2,18 +2,12 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import { View, Text } from 'react-native';
 import React from 'react';
 import {createStackNavigator} from 'react-navigation-stack';
-import Risk from './Risk';
-import Kazanc from './Kazanc';
-import Miktar from './Miktar';
-import Home from './Home';
+import Profile from './Profile';
 
 
 
-const NavigationYatirimYap = createStackNavigator({
-  Miktar: {screen: Miktar},
-  Kazanc: {screen: Kazanc},
-  Risk: {screen: Risk},
-  Home: {screen: Home},
+const NavigationProfile = createStackNavigator({
+  Profile: {screen: Profile},
 },
 {
   defaultNavigationOptions: {
@@ -27,4 +21,4 @@ const NavigationYatirimYap = createStackNavigator({
   },
 }
 );
-export default NavigationYatirimYap;
+export default NavigationProfile;

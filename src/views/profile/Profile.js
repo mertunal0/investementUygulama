@@ -3,9 +3,10 @@ import {
   Platform,
   StyleSheet,
   View,
+  Button,
   Text,
 } from 'react-native';
-
+import { Icon } from 'react-native-elements'
 
 
 export default class Home extends Component {
@@ -16,7 +17,10 @@ export default class Home extends Component {
     }
 
     static navigationOptions = { 
-      title: 'Profile',
+      title: 'Profil',
+      headerRight: () => (
+        <Icon name={"setting"} size={20} type={"antdesign"} color={"#000"} />
+      ),
     }
 
   render() {

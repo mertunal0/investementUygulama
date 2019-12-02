@@ -7,7 +7,7 @@ import {
   Picker,
   Text,
 } from 'react-native';
-import {Button} from '../components/Button'
+import {Button} from '../../components/Button'
 
 
 export default class Risk extends Component {
@@ -24,7 +24,7 @@ export default class Risk extends Component {
 
     toRisk() {
       if (this.state.riskTercihi != null && this.state.riskTercihi > 0 && this.state.riskTercihi <= 10) {
-        this.props.navigation.navigate('Home'); 
+        this.props.navigation.navigate('Loading'); 
       }
       else{
         alert("Lütfen bir tercih yapınız.");

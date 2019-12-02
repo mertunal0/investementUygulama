@@ -4,16 +4,15 @@ import {View,Text} from 'react-native';
 import { Icon } from 'react-native-elements'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import HomeScreen from './Home';
-import ProfileScreen from './Profile';
-import YatirimYapScreen from './YatirimYapStack';
+import HomeScreen from './Home';;
+import YatirimYapScreen from './yatirimyap/YatirimYapStack';
+import ProfileScreen from './profile/ProfileStack';
 
 const BottomTabNavigator = createBottomTabNavigator({
 
   HomeScreen,
   YatirimYapScreen,
-  ProfileScreen
-  
+  ProfileScreen,
 
 },
 {
