@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 
-
+import Stocklines from '../fetchdata/fetchcurrency';
 
 export default class Home extends Component {
     constructor(props) {
@@ -20,14 +20,13 @@ export default class Home extends Component {
     }
 
   render() {
-
     return (
-        <View style={styles.container}>
-          <Text>Home screen</Text>
-        </View>
+      <View>
+        <Stocklines/>
+      </View>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   container:{
