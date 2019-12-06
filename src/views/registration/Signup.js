@@ -33,7 +33,10 @@ export default class Signup extends Component {
       firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => this.props.navigation.navigate('BottomTabNavigator'))
+      .then((result) => {
+        result.user.updateProfile({displayName: this.state.name})
+        this.props.navigation.navigate('BottomTabNavigator')
+      })
       .catch(error => console.log(error))
     }
   }
