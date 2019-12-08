@@ -33,7 +33,9 @@ class Stocklines extends React.Component {
         }
         }
 
-
+    subStringRet(response){
+        return response.toString().substring(0,6);
+    }
     async getRates(){
 
         fetch("https://api.exchangeratesapi.io/latest?symbols=USD,TRY",
@@ -44,7 +46,7 @@ class Stocklines extends React.Component {
         .then((response) => response.json())
         .then((responseJson) => { 
             this.setState({
-                euro : [...this.state.euro,responseJson["rates"]["TRY"]]
+                euro : [...this.state.euro,this.subStringRet(responseJson["rates"]["TRY"])]
             })
         });
     fetch("https://api.exchangeratesapi.io/latest?base=USD",
@@ -55,7 +57,7 @@ class Stocklines extends React.Component {
     .then((response) => response.json())
     .then((responseJson) => { 
         this.setState({
-            dolar : [...this.state.dolar,responseJson["rates"]["TRY"]]
+            dolar : [...this.state.dolar,this.subStringRet(responseJson["rates"]["TRY"]) ]
         })
         
     }); 
@@ -67,7 +69,7 @@ class Stocklines extends React.Component {
     .then((response) => response.json())
     .then((responseJson) => { 
         this.setState({
-            yen : [...this.state.yen,responseJson["rates"]["TRY"]]
+            yen : [...this.state.yen,this.subStringRet(responseJson["rates"]["TRY"])]
         })
         
     });    
@@ -79,14 +81,14 @@ class Stocklines extends React.Component {
     .then((response) => response.json())
     .then((responseJson) => { 
         this.setState({
-            pound : [...this.state.pound,responseJson["rates"]["TRY"]]
+            pound : [...this.state.pound,this.subStringRet(responseJson["rates"]["TRY"])]
         })
         
     });       
 
     }
    componentDidMount(){
-    this.timer = setInterval(()=> this.getRates(), 1000)
+    this.timer = setInterval(()=> this.getRates(), 10000)
 
     fetch("https://newsapi.org/v2/top-headlines?country=tr&category=business&apiKey=b8867e244f204c9791848936070a7a34",
     {
@@ -107,6 +109,9 @@ class Stocklines extends React.Component {
         } 
     });    
         
+   }
+   componentWillMount(){
+    clearInterval(this.timer);
    }
    _refresh = function() {
         return new Promise((resolve) => {
@@ -159,7 +164,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[0])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[0]))}
                             >{this.state.title[0]}</Text>
                             <Text style={seperator}></Text>
@@ -169,7 +174,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[1])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[1]))}
                             >{this.state.title[1]}</Text>
                             <Text style={seperator}></Text>
@@ -179,7 +184,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[2])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[2]))}
                             >{this.state.title[2]}</Text>
                             <Text style={seperator}></Text>
@@ -189,7 +194,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[3])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[3]))}
                             >{this.state.title[3]}</Text>
                             <Text style={seperator}></Text>
@@ -199,7 +204,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[4])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[4]))}
                             >{this.state.title[4]}</Text>
                             <Text style={seperator}></Text>
@@ -209,7 +214,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[5])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[5]))}
                             >{this.state.title[5]}</Text>
                             <Text style={seperator}></Text>
@@ -219,7 +224,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[6])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[6]))}
                             >{this.state.title[6]}</Text>
                             <Text style={seperator}></Text>
@@ -229,7 +234,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[7])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[7]))}
                             >{this.state.title[7]}</Text>
                             <Text style={seperator}></Text>
@@ -239,7 +244,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[8])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[8]))}
                             >{this.state.title[8]}</Text>
                             <Text style={seperator}></Text>
@@ -249,7 +254,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[9])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[9]))}
                             >{this.state.title[9]}</Text>
                             <Text style={seperator}></Text>
@@ -259,7 +264,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[10])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[10]))}
                             >{this.state.title[10]}</Text>
                             <Text style={seperator}></Text>
@@ -269,7 +274,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[11])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[11]))}
                             >{this.state.title[11]}</Text>
                             <Text style={seperator}></Text>
@@ -279,7 +284,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[12])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[12]))}
                             >{this.state.title[12]}</Text>
                             <Text style={seperator}></Text>
@@ -289,7 +294,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[13])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[13]))}
                             >{this.state.title[13]}</Text>
                             <Text style={seperator}></Text>
@@ -299,7 +304,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[14])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[14]))}
                             >{this.state.title[14]}</Text>
                             <Text style={seperator}></Text>
@@ -309,7 +314,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[15])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[15]))}
                             >{this.state.title[15]}</Text>
                             <Text style={seperator}></Text>
@@ -319,7 +324,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[16])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[16]))}
                             >{this.state.title[16]}</Text>
                             <Text style={seperator}></Text>
@@ -329,7 +334,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[17])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[17]))}
                             >{this.state.title[17]}</Text>
                             <Text style={seperator}></Text>
@@ -339,7 +344,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[18])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[18]))}
                             >{this.state.title[18]}</Text>
                             <Text style={seperator}></Text>
@@ -349,7 +354,7 @@ class Stocklines extends React.Component {
                             style={styles.imageUrl}
                             source={{ uri: String(this.state.urltoImage[19])}}
                             />
-                            <Text style={coinPrice}
+                            <Text style={newsline}
                             onPress={() =>Linking.openURL(String(this.state.url[19]))}
                             >{this.state.title[19]}</Text>
                             <Text style={seperator}></Text>
@@ -391,11 +396,18 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         marginRight: 5
     },
-    coinPrice: {
+    newsline: {
         marginTop: 10,
         marginLeft: 20,
         marginRight: 5,
-        fontWeight: "bold",       
+        fontWeight: "bold", 
+        fontSize:18 ,  
+    },
+    coinPrice : {
+        marginTop: 10,
+        marginLeft: 20,
+        marginRight: 5,
+        fontWeight: "bold",
     },
     image: {
         marginLeft: 15,
@@ -404,45 +416,25 @@ const styles = StyleSheet.create({
     },
     imageUrl: {
         marginLeft: 15,
-        width: 100,
-        height: 100,
+        marginTop: 10,
+        width: null,
+        flex: 1,
+        aspectRatio:1,
+        height:"60%"
+
     },
     moneySymbol: {
         fontWeight: "bold",
     },
-    statisticsContainer: {
-        display: "flex",
-        borderTopColor: "#FAFAFA",
-        borderTopWidth: 2,
-        padding: 10,
-        flexDirection: "row",
-        justifyContent: "space-around"
-    },
-    percentChangePlus: {
-        color: "#00BFA5",
-        fontWeight: "bold",
-        marginLeft: 5
-    },
-    percentChangeMinus: {
-        color: "#DD2C00",
-        fontWeight: "bold",
-        marginLeft: 5
-    }
+   
 })
 
 
 const { 
-    container,
-    image,
-    moneySymbol,
-    upperRow,
     coinSymbol,
-    coinName,
     coinPrice,
-    statisticsContainer,
     seperator,
-    percentChangePlus,
-    percentChangeMinus
+    newsline
 } = styles;
 
 export default Stocklines;
