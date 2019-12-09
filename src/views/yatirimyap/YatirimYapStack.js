@@ -5,7 +5,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Risk from './Risk';
 import Kazanc from './Kazanc';
 import Miktar from './Miktar';
-import Home from '../Home';
+import Home from '../../home/Home';
 import Loading from './Loading';
 
 

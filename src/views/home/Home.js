@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 
-import Stocklines from '../fetchdata/fetchcurrency';
+import Stocklines from '../../fetchdata/fetchcurrency';
 
 export default class Home extends Component {
     constructor(props) {
