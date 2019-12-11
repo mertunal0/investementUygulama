@@ -4,7 +4,7 @@ import {View,Text} from 'react-native';
 import { Icon } from 'react-native-elements'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import HomeScreen from '../home/HomeStack';;
+import HomeScreen from '../views/home/HomeStack';
 import YatirimYapScreen from './yatirimyap/YatirimYapStack';
 import ProfileScreen from './profile/ProfileStack';
 

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {WebView} from 'react-native-webview';
 import {
   Platform,
   StyleSheet,
@@ -6,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 
-export default class Home extends Component {
+export default class ViewInApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,17 +15,18 @@ export default class Home extends Component {
     }
 
     static navigationOptions = { 
-      title: '',
+      title: 'ViewInApp',
     }
 
-  render() {
-    return (
-      <View>
-      </View>
-    );
-  }
+    render() {
+      return (
+        <WebView
+          source={{uri: this.props.navigation.getParam("url")}}
+          style={{marginTop: 20}}
+        />
+      );
+    }
 }
-
 const styles = StyleSheet.create({
   container:{
     marginTop: Platform.OS == 'ios' ? 21:0,
