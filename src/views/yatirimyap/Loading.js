@@ -10,6 +10,7 @@ import {
 import {Button} from '../../components/Button';
 import PortfolioAlloc from 'portfolio-allocation';
 import { Icon } from 'react-native-elements'
+import Firebase from 'firebase'
 
 
 export default class Loading extends Component {
@@ -22,63 +23,31 @@ export default class Loading extends Component {
 
           enflasyon: 0.15, // yıllık enflasyon bilgisi.
 
-          yatirimAraclari: [
-              {isim: "GAU", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "AA", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "BBBB", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "CCCCC", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "DDDDDD", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "EEEEE", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "FFFF", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "GGG", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "HH", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "JJJ", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "KKKK", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "LLLLL", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "MMMM", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "NNN", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "OO", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "PPPP", uuid: "348-sdlkj-23egf", ortalamaGetiri: 2, standartSapma: 0.0523543, gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-              {isim: "USD-TL", uuid: "657-esdfv-234da", ortalamaGetiri: 0.00001, standartSapma: 0.0745643*Math.sqrt(365), gecmisDegisim: [0,1,2,3,0,1], gelecekTahmin: [0,1,2,3,0,1]},
-          ],
+          yatirimAraclari: [],
           yatirimAraclariEliminated: [],
 
           results: 0
         }
     }
 
-    NLPOptimisation() {
+    NLPOptimisation(tempYatirimAraclari) {
         var dizitempEliminated = []
         var dumbreactnativeDizi = []
-        for(var i = 0; i<this.state.yatirimAraclari.length; i++) {
-            if (this.state.yatirimAraclari[i].ortalamaGetiri > this.state.enflasyon + this.state.userRisk / 1000) {
-                this.state.yatirimAraclariEliminated.push(this.state.yatirimAraclari[i]);
-                dizitempEliminated.push(this.state.yatirimAraclari[i]);
+        for(var i = 0; i<tempYatirimAraclari.length; i++) {
+            if (tempYatirimAraclari[i].ortalamaGetiri > this.state.enflasyon + this.state.userRisk / 1000) {
+                this.state.yatirimAraclariEliminated.push(tempYatirimAraclari[i]);
+                dizitempEliminated.push(tempYatirimAraclari[i]);
                 this.setState({yatirimAraclariEliminated: dizitempEliminated});
             }
         }
+        console.log(this.state.yatirimAraclariEliminated)
         
         var dizitempEliminated2 = []
         if(this.state.yatirimAraclariEliminated.length < 3) {
-            this.state.yatirimAraclari.sort(function(a, b) {
+            tempYatirimAraclari.sort(function(a, b) {
               return parseFloat(b.standartSapma) - parseFloat(a.standartSapma)
             });
-            dizitempEliminated2 = this.state.yatirimAraclari.slice(28,32);
+            dizitempEliminated2 = tempYatirimAraclari.slice(28,32);
             dumbreactnativeDizi = dizitempEliminated2;
         }
         else if(this.state.yatirimAraclariEliminated.length < 6) {
@@ -97,7 +66,7 @@ export default class Loading extends Component {
             }
         }
         else{
-            this.state.yatirimAraclari.sort(function(a, b) {
+            tempYatirimAraclari.sort(function(a, b) {
               return parseFloat(b.standartSapma) - parseFloat(a.standartSapma)
             });
 
@@ -135,7 +104,88 @@ export default class Loading extends Component {
 
 
     componentDidMount() {
-      this.NLPOptimisation();
+      var database = Firebase.database();
+      var ref = database.ref('/')
+
+      ref.on('value', gotData.bind(this), errData);
+      
+      function gotData(data) {
+        //databaseden veriyi çektik. bunu yatirimAraclari'na attık.
+        var yatirimAraclari = data.val()
+        //isimler dbdeki key'ler oldu.
+        var isimler = Object.keys(yatirimAraclari);
+        
+        //asıl kullanacağımız cinste olan diziye tempYatirimAraclari dedik.
+        var tempYatirimAraclari = new Array(32)
+        for(let i = 0; i < 32; i++) {
+          //istediğimiz formata dönüştürüyoruz.
+          tempYatirimAraclari[i] = {};
+        }
+        
+        //sonra istediğimiz dataları istediğimiz variable isimleriyle pushluyoruz.
+        //ilk olarak isimler
+        for(let i = 0; i < 32; i++) {
+          tempYatirimAraclari[i].isim = isimler[i];
+        }
+
+        //ortalama getirileri çekiyoruz. bunu da pushluyoruz.
+        var ortalamaGetiriler = []
+        for(let i=0; i<32 ; i++) {
+          ortalamaGetiriler[i] = yatirimAraclari[isimler[i]].Getiri;
+        }
+        //push
+        for(let i = 0; i < 32; i++) {
+          tempYatirimAraclari[i].ortalamaGetiri = ortalamaGetiriler[i];
+          tempYatirimAraclari[i].ortalamaGetiri = tempYatirimAraclari[i].ortalamaGetiri[0];
+        }
+
+        //standart sapmayı çekiyoruz ve pushluyoruz.
+        var standartSapmalar = []
+        for(let i=0; i<32; i++) {
+          standartSapmalar[i] = yatirimAraclari[isimler[i]].Sapma;
+        }
+        //push
+        for(let i = 0; i < 32; i++) {
+          tempYatirimAraclari[i].standartSapma = standartSapmalar[i];
+          tempYatirimAraclari[i].standartSapma = tempYatirimAraclari[i].standartSapma[0];
+        }
+
+        //LSTM çıktısını çekip pushluyoruz.
+        var gelecekTahminler = []
+        for(let i = 0; i< 32; i++) {
+          gelecekTahminler[i] = yatirimAraclari[isimler[i]].Dizi
+        }
+        //push
+        for(let i = 0; i <32 ; i++) {
+          tempYatirimAraclari[i].gelecekTahmin = gelecekTahminler[i];
+        }
+
+        //Investing verisini çekip pushluyoruz.
+        var gecmisDegisimler = []
+        for(let i = 0; i < 32; i++) {
+          gecmisDegisimler[i] = yatirimAraclari[isimler[i]].Change
+        }
+        //bunlar 0,1,2 indexlerle değil, başka key'lerle tanımlanmış. tarihler key olarak kullanılmı.
+        //bu keylerden kurtulmak için şu işlemleri yapıyoruz.
+        var tempGecmisDegisimler = []
+        for(let i = 0; i < 32; i++) {
+          tempGecmisDegisimler[i] = Object.values(gecmisDegisimler[i])
+        }
+        gecmisDegisimler = tempGecmisDegisimler
+        //Push
+        for(let i = 0; i<32; i++) {
+          tempYatirimAraclari[i].gecmisDegisim = gecmisDegisimler[i];
+        }
+        
+        // böylece veriyi tamamen istediğimiz formata sokmuş olduk. artık state'e pushlayabiliriz:
+        this.setState({yatirimAraclari: tempYatirimAraclari});
+
+        this.NLPOptimisation(tempYatirimAraclari);
+      }
+  
+      function errData(error) {
+        console.log(error)
+      }
     }
 
 
