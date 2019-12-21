@@ -14,6 +14,8 @@ export default class Risk extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          miktarUser: this.props.navigation.getParam("miktarUser"),
+          kazancOraniUser: this.props.navigation.getParam("kazancOraniUser"),
           riskTercihi: null
         }
     }
@@ -24,7 +26,7 @@ export default class Risk extends Component {
 
     toRisk() {
       if (this.state.riskTercihi != null && this.state.riskTercihi > 0 && this.state.riskTercihi <= 10) {
-        this.props.navigation.navigate('Loading'); 
+        this.props.navigation.navigate('Loading', {miktarUser: this.state.miktarUser, kazancOraniUser: this.state.kazancOraniUser, riskTercihiUser: this.state.riskTercihi}); 
       }
       else{
         alert("Lütfen bir tercih yapınız.");

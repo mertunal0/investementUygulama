@@ -13,6 +13,7 @@ export default class Kazanc extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          miktarUser: this.props.navigation.getParam("miktarUser"),
           kazancOrani: null
         }
     }
@@ -23,7 +24,7 @@ export default class Kazanc extends Component {
 
     toRisk() {
       if (this.state.kazancOrani != null && this.state.kazancOrani > 0 && this.state.kazancOrani <= 100) {
-        this.props.navigation.navigate('Risk'); 
+        this.props.navigation.navigate('Risk', {miktarUser: this.state.miktarUser, kazancOraniUser: this.state.kazancOrani}); 
       }
       else{
         alert("Lütfen geçerli bir oran giriniz.");

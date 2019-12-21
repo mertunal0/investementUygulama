@@ -25,7 +25,7 @@ export default class Miktar extends Component {
 
     toKazanc() {
       if (this.state.paramiktari != null && this.state.paramiktari > 0) {
-        this.props.navigation.navigate('Kazanc'); 
+        this.props.navigation.navigate('Kazanc', {miktarUser: this.state.paramiktari}); 
       }
       else{
         alert("Lütfen geçerli bir miktar giriniz.");
@@ -39,7 +39,7 @@ export default class Miktar extends Component {
         <View style={styles.container}>
           <View style={{flex: 1}}>
             <Text style={styles.infoText}>
-              Size uygun yatırım fırsatını yakalamak için .... App sizden 3 bilgi isteyecek.
+              Size uygun yatırım fırsatını yakalamak için RumpeIn App sizden 3 bilgi isteyecek.
               {"\n\n"}
               (1/3) İlk olarak ne kadar bütçeyle yatırım yapacağınızı belirleyelim.
             </Text>

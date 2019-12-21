@@ -7,6 +7,7 @@ import Kazanc from './Kazanc';
 import Miktar from './Miktar';
 import Home from '../home/HomeStack';
 import Loading from './Loading';
+import Sonuc from './Sonuc'
 
 
 
@@ -15,7 +16,8 @@ const NavigationYatirimYap = createStackNavigator({
   Kazanc: {screen: Kazanc},
   Risk: {screen: Risk},
   Home: {screen: Home},
-  Loading: {screen: Loading}
+  Loading: {screen: Loading},
+  Sonuc: {screen: Sonuc}
 },
 {
   defaultNavigationOptions: {
