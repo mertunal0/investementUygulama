@@ -13,6 +13,8 @@ import {
   View,
   Text,
   StatusBar,
+  Image,
+  Dimensions
 } from 'react-native';
 import {Input} from '../components/Input'
 import {Button} from '../components/Button'
@@ -42,14 +44,22 @@ export default class App extends Component {
     return (
         <View style={styles.container}>
           <StatusBar backgroundColor="#fff" barStyle="dark-content"></StatusBar>
-          <Text style={{alignSelf: "center"}}>Welcome</Text>
-
+          <View
+            style={{
+              flex: 6,
+              alignItems: 'center',
+              justifyContent: "center",
+              position: 'relative',
+            }}
+          >
+            <Image style={{flex:1, maxWidth: 320, maxHeight: 180}} source={require('../assets/logo_with_name.png')}></Image>
+          </View>
+          <View style={{flex:5}}>
           <Button 
                 textColor='white'
                 backgroundColor='#00aeef'
                 borderColor='#174cff'
                 borderWidth={1}
-                marginTop = {80} 
                 onPress={this.toSignUp.bind(this)}>Kayıt Ol
             </Button>
             <Button 
@@ -60,6 +70,7 @@ export default class App extends Component {
                 marginTop={10}
                 onPress={this.toSignIn.bind(this)}>Giriş Yap
             </Button>
+            </View>
         </View>
     );
   }
@@ -71,7 +82,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: "center"
+    justifyContent: "center",
+    alignContent: 'center',
   },
 });
 

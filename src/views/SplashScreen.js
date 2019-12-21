@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, Dimensions } from 'react-native';
 import firebase from 'firebase';
 import { Firebase } from '../components/Firebase';
 
@@ -22,11 +22,12 @@ export default class SplashScreen extends React.Component {
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          justifyContent: "center",
+          position: 'relative',
         }}
       >
-        <Text>Splash</Text>
+        <Image style={{flex:1, width: Dimensions.get('window').width, height: Dimensions.get('window').height}} source={require('../assets/splash_screen.png')}></Image>
       </View>
     );
   }
