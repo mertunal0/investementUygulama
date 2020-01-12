@@ -3,7 +3,7 @@ import * as firebase from "firebase";
 require('firebase/auth')
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB57r2pnEtoMYR6kpYCnPCo4YkgfGlMns4",
+    apiKey: "bu kısım gizlendi",
     authDomain: "investement-app.firebaseapp.com",
     databaseURL: "https://investement-app.firebaseio.com",
     projectId: "investement-app",
